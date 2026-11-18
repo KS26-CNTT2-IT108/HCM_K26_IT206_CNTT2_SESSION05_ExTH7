@@ -1,0 +1,98 @@
+SESSION05
+[Bài thực hành 7] Xây dựng kế hoạch tổ chức sự kiện công nghệ AI Innovation Day
+
+Tên lớp: HCM K26 CNTT2
+Môn học: Kỹ năng PROMPTING với AI
+Họ và tên: LƯƠNG THANH THƯ
+
+
+1. Bộ prompt (kết hợp 3 kỹ thuật)
+Prompt 1 (Chain-of-Thought): phân tích khả thi. “Dựa trên [thông tin cố định], hãy phân tích khả thi từng bước: (1) chi phí bình quân mỗi người, (2) tỷ lệ nhân sự/sinh viên, (3) yêu cầu địa điểm, (4) rủi ro chính và cách giảm. Cuối cùng kết luận khả thi hay không.”
+Prompt 2 (Chaining): lịch trình. “Dựa trên [kết quả P1], lập lịch 1 ngày theo khung giờ, gồm phần nghe và phần thực hành. Không đổi quy mô 150 người.”
+Prompt 3 (CoT + Chaining): ngân sách. “Dựa trên [P1 + P2], lập dự toán. Tính từng bước: liệt kê hạng mục, tính thành tiền, cộng tổng, so với 15 triệu. Nếu vượt, đề xuất cắt giảm.”
+Prompt 4 (Chaining): nhân sự. “Dựa trên [P2 + P3], phân công đúng 10 người. Mỗi người ghi: vai trò, nhiệm vụ, khung giờ.”
+Prompt 5 (Chaining): truyền thông. “Dựa trên [P2 + P3 + P4], lập kế hoạch truyền thông trước sự kiện, ngân sách truyền thông phải khớp bảng dự toán.”
+Prompt 6 (Context Management): tóm tắt ngữ cảnh. “Tóm tắt toàn bộ dự án thành bản ngắn gồm: thông tin cố định, quyết định đã chốt, số liệu chính, việc còn lại, để tôi dán vào hội thoại mới.”
+Prompt 7 (CoT): kiểm tra và hiệu chỉnh. “Đối chiếu P2, P3, P4, P5 từng bước theo các ràng buộc (≤15 triệu, 150 người, 10 nhân sự). Nêu mâu thuẫn rồi sửa.”
+Dùng khi sang hội thoại mới: dán bản tóm tắt (mục 7) rồi viết “Hãy tiếp tục từ bản tóm tắt này, không thay đổi các quyết định đã chốt.”
+
+Giải thích cho người mới:
+Chain-of-Thought: bắt AI tính từng bước, giống giáo viên yêu cầu “trình bày cách giải”.
+Prompt Chaining: kết quả prompt trước làm đầu vào prompt sau, giống dây chuyền sản xuất.
+Context Management: AI quên khi hội thoại dài, nên ta ghi “biên bản” để mang sang cuộc mới.
+
+2. Bản phân tích tính khả thi
+Chi phí: 14.800.000 / 150 ≈ 98.700đ mỗi sinh viên, hợp lý cho sự kiện miễn phí.
+Nhân sự: 10 người cho 150 sinh viên, tỷ lệ 1:15, đủ quản lý.
+Địa điểm: cần 1 hội trường ≥150 chỗ, có máy chiếu, âm thanh, Wi-Fi.
+Rủi ro và cách giảm:
+Sinh viên đăng ký nhưng không đến: đóng đăng ký ở 150 người, lập danh sách chờ 30 người để bù chỗ trống.
+Diễn giả hủy: có sẵn 1 diễn giả dự phòng trong CLB.
+Mất Wi-Fi: có điểm phát 4G dự phòng.
+Vượt ngân sách: có quỹ dự phòng 800.000đ.
+Kết luận: khả thi.
+
+3. Lịch trình sự kiện
+Giờ		Nội dung
+07:30–08:30	Check-in, phát thẻ tên
+08:30–08:45	Khai mạc
+08:45–09:45	Talk 1: AI trong học tập
+09:45–10:00	Teabreak
+10:00–11:30	Workshop: dùng AI học tập và viết prompt
+11:30–13:30	Nghỉ trưa (sinh viên tự túc)
+13:30–14:30	Talk 2: AI trong công việc
+14:30–16:00	AI Challenge: 30 nhóm × 5 người
+16:00–16:30	Trao giải, bế mạc, khảo sát
+4. Bảng dự toán ngân sách
+Hạng mục					Chi phí (đồng)
+Địa điểm, âm thanh, máy chiếu			2.500.000
+Diễn giả (2 người)				2.000.000
+Teabreak (160 người × 20.000)			3.200.000
+Nước uống (160 × 5.000)				800.000
+Truyền thông (poster, quảng cáo)		1.200.000
+Backdrop, standee, thẻ tên, in ấn		1.500.000
+Giải thưởng AI Challenge			1.500.000
+Áo BTC (10 × 80.000)				800.000
+Công cụ AI dùng demo				500.000
+Dự phòng					800.000
+Tổng						14.800.000 (≤ 15.000.000)
+
+5. Bảng phân công 10 nhân sự
+#	Vai trò				Nhiệm vụ chính
+1	Trưởng BTC			Điều phối chung, quyết định xử lý sự cố
+2	Phó BTC (chương trình)		Giữ đúng lịch, làm việc với MC và diễn giả
+3	Nội dung			Liên hệ diễn giả, chuẩn bị workshop và đề AI Challenge
+4	Tài chính			Kiểm soát chi tiêu theo dự toán
+5	Hậu cần				Địa điểm, teabreak, nước, thẻ tên
+6	Truyền thông 1			Viết nội dung bài đăng, quản lý đăng ký
+7	Truyền thông 2			Thiết kế poster, chụp ảnh sự kiện
+8	Đón tiếp 1			Check-in 07:30–08:30, hướng dẫn chỗ ngồi
+9	Đón tiếp 2			Check-in, sau đó hỗ trợ các nhóm AI Challenge
+10	Kỹ thuật			Âm thanh, máy chiếu, Wi-Fi
+
+6. Kế hoạch truyền thông trước sự kiện
+T-14: mở form đăng ký (giới hạn 150, có danh sách chờ), đăng poster trên fanpage và group sinh viên.
+T-10: đăng giới thiệu diễn giả và nội dung workshop.
+T-7: chạy quảng cáo fanpage trong ngân sách 1.200.000đ, nhờ lớp trưởng chia sẻ qua Zalo.
+T-3: đăng đếm ngược, thông báo số chỗ còn lại.
+T-1: gửi email hoặc tin nhắn nhắc lịch, địa điểm, nhắc mang laptop hoặc điện thoại, xác nhận người tham dự.
+
+7. Bản tóm tắt ngữ cảnh dự án
+Dự án: AI Innovation Day cho sinh viên.
+Cố định: 150 sinh viên, 1 ngày, ngân sách ≤ 15.000.000đ, 10 nhân sự. Mục tiêu: hiểu và trải nghiệm AI trong học tập và công việc.
+Đã chốt: lịch 07:30–16:30 (2 talk, 1 workshop, AI Challenge 30 nhóm); tổng dự toán 14.800.000đ gồm dự phòng 800.000đ; nhân sự gồm 10 vai trò (trưởng, phó, nội dung, tài chính, hậu cần, 2 truyền thông, 2 đón tiếp, kỹ thuật); truyền thông từ T-14 đến T-1.
+Rủi ro đã xử lý: no-show (danh sách chờ 30 người), diễn giả hủy, mất Wi-Fi.
+Còn lại: chốt địa điểm, liên hệ diễn giả, thiết kế poster.
+
+8. Báo cáo kiểm tra và hiệu chỉnh
+Vấn đề 1: ngân sách bản nháp vượt. Bản nháp đầu tổng 15.800.000đ, vượt 800.000đ.
+Cách sửa: giảm địa điểm 3,0 → 2,5 triệu, teabreak 4,0 → 3,2 triệu, truyền thông 1,5 → 1,2 triệu, in ấn 1,7 → 1,5 triệu (tổng giảm 1,8 triệu, còn 14,0 triệu).
+Thêm dự phòng 800.000đ, tổng 14.800.000đ, đạt.
+Vấn đề 2: lịch và ngân sách chưa khớp. Lịch có 1 teabreak nhưng nháp tính 2 lần, đã sửa thành 1 lần.
+Vấn đề 3: thẻ tên và teabreak. Tính theo 160 người (150 sinh viên + 10 BTC) để đồng nhất.
+Vấn đề 4: workshop cần thiết bị. Thêm nhắc “mang laptop hoặc điện thoại” vào truyền thông và giao người số 10 lo Wi-Fi.
+Kiểm tra ràng buộc:
+150 sinh viên: giữ nguyên.
+10 nhân sự: giữ nguyên.
+Ngân sách: 14.800.000đ, không vượt 15.000.000đ.
+Liên kết hạng mục: lịch, ngân sách, nhân sự và truyền thông khớp nhau.
